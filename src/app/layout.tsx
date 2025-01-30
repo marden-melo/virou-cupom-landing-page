@@ -9,7 +9,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "VIROUCUPOM",
+  title: "VIROU CUPOM",
   description: "Melhor site de desconto",
 };
 

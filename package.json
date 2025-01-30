@@ -1,6 +1,7 @@
 {
   "name": "viroucupom",
   "version": "0.1.0",
+  "author": "Marden Melo",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
