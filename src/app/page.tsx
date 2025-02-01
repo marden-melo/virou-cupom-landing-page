@@ -2,19 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
   const getWhatsappLink = (planName: string) => {
     const message = `Quero assinar o plano ${planName}`;
-    const phoneNumber = "55XX123456789"; // Insira o número de WhatsApp da empresa
+    const phoneNumber = "5535999039120";
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  };
+
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const message = `Quero entrar para a lista de espera\n\nNome: ${name}\nEmail: ${email}`;
+    const phoneNumber = "5535999039120";
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappLink, "_blank");
   };
 
   return (
     <div className="bg-gray-100 text-gray-900 min-h-screen flex flex-col items-center w-full">
       {/* Header */}
-      <header className="w-full flex justify-between items-center py-6 px-12 bg-zinc-200 shadow-md top-0 z-50">
+      <header className="w-full flex justify-between items-center py-6 px-12 bg-zinc-100 shadow-md top-0 z-50">
         <Image
           src="/VC-logo-red.png"
           alt="Virou Cupom"
@@ -38,26 +53,41 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative w-full h-[600px] flex items-center justify-center text-center bg-gradient-to-r from-purple-500 to-purple-600 shadow-lg text-white ">
+      <section className="relative w-full h-[600px] flex items-center justify-center text-center shadow-lg text-white rounded-t-lg rounded-b-lg">
         <Image
-          src="/image-1.png"
+          src="/ticket3.png"
           alt="Imagem de fundo"
           layout="fill"
           objectFit="cover"
-          className="absolute top-0 left-0 w-full h-full z-10"
+          className="absolute top-20 left-0 w-full h-full z-10"
         />
         <a
           href="www.viroucupom.com.br"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-zinc-900 text-white px-10 py-4 rounded-full text-lg font-semibold transition duration-300 hover:bg-indigo-900 shadow-lg z-40 mt-[18rem]"
+          className="bg-zinc-900 text-white px-10 py-4 rounded-full text-lg font-semibold transition duration-300 hover:bg-[#ff1a1a] shadow-lg z-40 mt-[18rem] ml-[41rem]"
         >
-          ACESSE AQUI
+          ACESSO A PLATAFORMA
         </a>
       </section>
 
-      {/* About Section */}
       <section id="about" className="w-full py-24 px-6 bg-gray-200 text-center">
+        <h2 className="text-4xl font-bold text-[#ff1a1a]">
+          Por que o VIROU CUPOM existe?
+        </h2>
+        <p className="text-lg mt-6 max-w-5xl mx-auto text-gray-700">
+          O Virou Cupom nasceu com a missão de revolucionar a forma como as
+          lojas atraem e fidelizam seus clientes. Acreditamos que descontos são
+          uma maneira poderosa de gerar valor para consumidores e lojistas,
+          criando uma relação vantajosa para todos. Nossa plataforma foi criada
+          para facilitar esse processo de forma acessível, eficiente e
+          estratégica, proporcionando visibilidade e aumento de vendas para os
+          nossos parceiros.
+        </p>
+      </section>
+
+      {/* About Section */}
+      {/* <section id="about" className="w-full py-24 px-6 bg-gray-200 text-center">
         <h2 className="text-4xl font-bold text-[#ff1a1a]">
           O que é o VIROU CUPOM?
         </h2>
@@ -68,7 +98,7 @@ export default function Home() {
           eficaz, alcançando um público qualificado em busca das melhores
           ofertas.
         </p>
-      </section>
+      </section> */}
 
       {/* Benefits Section */}
       <section
@@ -76,21 +106,21 @@ export default function Home() {
         className="w-full py-20 px-6 bg-gray-300 text-center"
       >
         <h2 className="text-4xl font-bold text-zinc-900">
-          Benefícios para sua Loja
+          Como o Virou Cupom beneficia sua loja?
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-20 max-w-6xl mx-auto">
           {[
             {
               title: "Maior Visibilidade",
-              text: "Aumente a visibilidade da sua marca e produtos, atraindo mais clientes.",
+              text: "Aumente a visibilidade da sua marca e produtos, atraindo mais clientes através de cupons de desconto bem posicionados.",
             },
             {
               title: "Aumento de Vendas",
-              text: "Os cupons de desconto atraem mais clientes, gerando aumento nas vendas.",
+              text: "Com campanhas direcionadas e cupons atraentes, sua loja experimentará um aumento significativo nas vendas.",
             },
             {
               title: "Controle Total",
-              text: "Controle seus cupons, campanhas e resultados de forma prática e rápida.",
+              text: "Gerencie suas campanhas de cupons e acompanhe os resultados em tempo real, de forma simples e eficaz.",
             },
           ].map((benefit, index) => (
             <div
@@ -103,6 +133,76 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <form
+        onSubmit={handleSubscribe}
+        className="mt-12 p-8 bg-gradient-to-r from-[#ff1a1a] to-[#ff4d4d] text-white rounded-xl shadow-xl max-w-[40rem] mx-auto"
+      >
+        <h2 className="text-3xl font-semibold text-center mb-6">
+          Garanta Vantagens Exclusivas ao Entrar na Lista VIP!
+        </h2>
+        <p className="text-lg mb-1 text-center">
+          Estamos preparando a melhor plataforma para gerar cupons de desconto e
+          oportunidades imperdíveis para você!
+        </p>
+        <p className="text-lg mb-6 text-center">
+          Ao entrar na nossa lista de espera, você garante benefícios
+          antecipados, como:
+        </p>
+
+        <div className="mt-8 text-center text-sm text-white">
+          <ul className="list-disc text-left mx-auto max-w-[25rem]">
+            <li className="mb-2">
+              <strong>Acesso prioritário:</strong> Seja um dos primeiros a
+              cadastrar sua loja e comece a oferecer cupons antes da
+              concorrência.
+            </li>
+            <li className="mb-2">
+              <strong>Plano especial de lançamento:</strong> Condições e
+              descontos exclusivos para quem fizer parte da nossa primeira fase.
+            </li>
+            <li className="mb-2">
+              <strong>Destaque gratuito na plataforma:</strong> Sua loja poderá
+              aparecer em espaços premium de marketing na fase inicial.
+            </li>
+            <li className="mb-4">
+              <strong>Consultoria gratuita:</strong> Ajuda estratégica para
+              criar cupons irresistíveis e atrair mais clientes.
+            </li>
+          </ul>
+          <p className="mt-8 font-semibold mb-8 text-lg text-black">
+            Não perca essa oportunidade única!
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-6 mb-6">
+          <input
+            type="text"
+            placeholder="Digite seu nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="px-6 py-3 rounded-full text-lg border-2 border-white focus:outline-none focus:ring-4 focus:ring-[#ff1a1a] w-full text-gray-900"
+          />
+          <input
+            type="email"
+            placeholder="Digite seu e-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="px-6 py-3 rounded-full text-lg border-2 border-white focus:outline-none focus:ring-4 focus:ring-[#ff1a1a] w-full text-gray-900"
+          />
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <button
+            type="submit"
+            className="bg-[#ff1a1a] text-white px-10 py-4 rounded-full text-lg font-semibold transition duration-300 hover:bg-red-600 focus:ring-4 focus:ring-[#ff1a1a] focus:outline-none"
+          >
+            Entrar na Lista de Espera
+          </button>
+        </div>
+      </form>
 
       {/* Planos de Assinatura */}
       <section id="plans" className="w-full py-20 px-6 bg-gray-100 text-center">
@@ -202,7 +302,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() =>
-                  (window.location.href = getWhatsappLink(plan.title))
+                  window.open(getWhatsappLink(plan.title), "_blank")
                 }
                 className="mt-6 bg-[#ff1a1a] text-white px-8 py-3 rounded-full text-lg font-semibold transition duration-300 hover:bg-red-600"
               >
@@ -250,22 +350,25 @@ export default function Home() {
           ].map((adSpace, index) => (
             <div
               key={index}
-              className="bg-white text-black p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+              className="bg-white text-black p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex flex-col h-full"
             >
-              <h3 className="text-2xl font-bold">{adSpace.title}</h3>
-              <p className="mt-4 text-lg text-gray-600">
-                {adSpace.description}
-              </p>
-              <p className="mt-4 text-xl font-semibold text-[#ff1a1a]">
-                {adSpace.price}
-              </p>
+              <div className="flex-grow">
+                <h3 className="text-2xl font-bold">{adSpace.title}</h3>
+                <p className="mt-4 text-lg text-gray-600">
+                  {adSpace.description}
+                </p>
+                <p className="mt-4 text-xl font-semibold text-[#ff1a1a]">
+                  {adSpace.price}
+                </p>
+              </div>
+
               <button
                 onClick={() =>
-                  (window.location.href = getWhatsappLink(adSpace.title))
+                  window.open(getWhatsappLink(adSpace.title), "_blank")
                 }
                 className="mt-6 bg-[#ff1a1a] text-white px-8 py-3 rounded-full text-lg font-semibold transition duration-300 hover:bg-red-600"
               >
-                Contratar Agora
+                Assinar Agora
               </button>
             </div>
           ))}
