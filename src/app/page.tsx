@@ -476,13 +476,24 @@ export default function Home() {
       <footer className="w-full py-6 bg-gray-300 text-center mt-auto">
         <p>&copy; 2025 Virou Cupom. Todos os direitos reservados.</p>
         <p className="text-sm">
-          Desenvolvido por{" "}
+          Desenvolvido com <span className="text-red-600">❤️</span> por{" "}
           <Link
             href="https://www.discode.com.br"
             className="hover:text-[#ff1a1a]"
           >
             Discode Software House
           </Link>
+        </p>
+        <p className="mt-1 text-[10px]">
+          By{" "}
+          <a
+            href="https://github.com/marden-melo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#ff1a1a] transition"
+          >
+            Marden Melo
+          </a>
         </p>
       </footer>
     </div>
